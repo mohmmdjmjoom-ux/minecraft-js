@@ -37,6 +37,11 @@ const Game = {
     init() {
         this.world = this.copyWorld(this.originalWorld);
         this.addToolEvents();
+
+        document.getElementById("reset-button").addEventListener("click", () => {
+            this.resetWorld();
+        });
+
         this.renderWorld();
         this.renderInventory();
     },
@@ -168,6 +173,22 @@ const Game = {
             this.selectedItem = null;
         }
 
+        this.renderWorld();
+        this.renderInventory();
+    },
+
+    // Puts everything back like the start of the game
+    resetWorld() {
+        this.world = this.copyWorld(this.originalWorld);
+        this.inventory = {
+            tree: 0,
+            rock: 0,
+            dirt: 0
+        };
+        this.selectedTool = null;
+        this.selectedItem = null;
+
+        this.updateToolButtons();
         this.renderWorld();
         this.renderInventory();
     }
