@@ -216,6 +216,11 @@ h2 {
     cursor: pointer;
 }
 
+.inventory-item.selected {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold);
+}
+
 .inventory-empty {
     margin: 0;
     color: #bbb;

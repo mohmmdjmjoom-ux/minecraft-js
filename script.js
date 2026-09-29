@@ -18,6 +18,8 @@ const Game = {
 
     selectedTool: null,
 
+    selectedItem: null,
+
     // How many tiles of each type we collected
     inventory: {
         tree: 0,
@@ -51,7 +53,9 @@ const Game = {
 
     selectTool(toolName) {
         this.selectedTool = toolName;
+        this.selectedItem = null;
         this.updateToolButtons();
+        this.renderInventory();
     },
 
     // Highlights the selected tool button
@@ -93,7 +97,9 @@ const Game = {
     clickTile(row, col) {
         const tileType = this.world[row][col];
 
-        if (this.selectedTool !== null && this.toolRules[this.selectedTool] === tileType) {
+        if (this.selectedItem !== null && tileType === "sky") {
+            this.placeFromInventory(row, col);
+        } else if (this.selectedTool !== null && this.toolRules[this.selectedTool] === tileType) {
             this.removeTile(row, col);
             this.addToInventory(tileType);
         }
@@ -127,6 +133,14 @@ const Game = {
                 item.type = "button";
                 item.classList.add("inventory-item", "tile-" + tileType);
                 item.textContent = count;
+
+                if (tileType === this.selectedItem) {
+                    item.classList.add("selected");
+                }
+
+                item.addEventListener("click", () => {
+                    this.selectItem(tileType);
+                });
                 inventoryElement.appendChild(item);
             }
         }
@@ -136,6 +150,26 @@ const Game = {
         } else {
             emptyMessage.classList.add("hidden");
         }
+    },
+
+    // Selecting an inventory item cancels the selected tool
+    selectItem(tileType) {
+        this.selectedItem = tileType;
+        this.selectedTool = null;
+        this.updateToolButtons();
+        this.renderInventory();
+    },
+
+    placeFromInventory(row, col) {
+        this.world[row][col] = this.selectedItem;
+        this.inventory[this.selectedItem]--;
+
+        if (this.inventory[this.selectedItem] === 0) {
+            this.selectedItem = null;
+        }
+
+        this.renderWorld();
+        this.renderInventory();
     }
 };
 
