@@ -324,15 +324,3 @@ h2 {
     image-rendering: pixelated;
     border: 3px solid #000;
 }
-
-.start-section {
-    text-align: center;
-}
-
-.footer {
-    padding: 24px;
-    text-align: center;
-    color: #888;
-    font-size: 13px;
-    border-top: 4px solid #000;
-}
