@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft JS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <h1>Minecraft JS</h1>
+        <p>A 2D Minecraft world built with HTML, CSS and JavaScript. Pick a tool, collect blocks and build your own world.</p>
+        <a href="game.html" class="button button-green button-big">Start Playing</a>
+    </header>
+
+    <main class="landing-content">
+        <section class="panel">
+            <h2>How to Play</h2>
+            <ol class="steps">
+                <li>Click a tool in the toolbar. The selected tool becomes highlighted.</li>
+                <li>Click a tile in the world.</li>
+                <li>If the tile type matches your tool, the tile is removed from the world.</li>
+                <li>The removed tile goes to your inventory.</li>
+                <li>Click a tile in your inventory, then click an empty sky spot to place it back.</li>
+            </ol>
+        </section>
+
+        <section class="panel">
+            <h2>The Tools</h2>
+            <div class="tools-guide">
+                <article class="guide-card">
+                    <div class="guide-icons">
+                        <span class="tool-icon icon-axe"></span>
+                        <span class="guide-arrow">&rarr;</span>
+                        <span class="tile-preview tile-tree"></span>
+                    </div>
+                    <h3>Axe</h3>
+                    <p>Removes tree tiles.</p>
+                </article>
+                <article class="guide-card">
+                    <div class="guide-icons">
+                        <span class="tool-icon icon-pickaxe"></span>
+                        <span class="guide-arrow">&rarr;</span>
+                        <span class="tile-preview tile-rock"></span>
+                    </div>
+                    <h3>Pickaxe</h3>
+                    <p>Removes rock tiles.</p>
+                </article>
+                <article class="guide-card">
+                    <div class="guide-icons">
+                        <span class="tool-icon icon-shovel"></span>
+                        <span class="guide-arrow">&rarr;</span>
+                        <span class="tile-preview tile-dirt"></span>
+                    </div>
+                    <h3>Shovel</h3>
+                    <p>Removes dirt tiles.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Rules</h2>
+            <ul class="rules">
+                <li>Each tool can only remove its own tile type.</li>
+                <li>Grass cannot be removed.</li>
+                <li>Tiles from the inventory can only be placed on empty sky spots.</li>
+                <li>The Reset World button brings the world back to how it started.</li>
+            </ul>
+        </section>
+
+        <div class="start-section">
+            <a href="game.html" class="button button-green button-big">Enter the World</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Weekend Assignment - Minecraft JS</p>
+    </footer>
+</body>
+</html>

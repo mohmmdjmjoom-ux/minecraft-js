@@ -230,3 +230,109 @@ h2 {
 .hidden {
     display: none;
 }
+
+/* ===== Landing page ===== */
+.hero {
+    padding: 64px 24px 112px;
+    text-align: center;
+    background: url("images/grass.svg") bottom / 48px repeat-x, var(--sky);
+    border-bottom: 4px solid #000;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 4px 4px 0 #000;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 20px auto 32px;
+    color: #1d1f21;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.button-green {
+    background-color: var(--green);
+    box-shadow: inset -3px -3px 0 #3f7a1f, inset 3px 3px 0 #86d45a;
+}
+
+.button-green:hover {
+    background-color: #6dbb3c;
+}
+
+.button-big {
+    padding: 14px 28px;
+    font-size: 18px;
+}
+
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.steps,
+.rules {
+    margin: 0;
+    padding-left: 24px;
+    line-height: 1.8;
+}
+
+.tools-guide {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.guide-card {
+    padding: 16px;
+    text-align: center;
+    background-color: var(--panel-dark);
+    border: 3px solid #000;
+}
+
+.guide-card h3 {
+    margin: 12px 0 4px;
+}
+
+.guide-card p {
+    margin: 0;
+    color: #bbb;
+}
+
+.guide-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.guide-arrow {
+    font-size: 24px;
+}
+
+.tile-preview {
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    image-rendering: pixelated;
+    border: 3px solid #000;
+}
+
+.start-section {
+    text-align: center;
+}
+
+.footer {
+    padding: 24px;
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    border-top: 4px solid #000;
+}
