@@ -15,6 +15,7 @@ A 2D version of Minecraft built with HTML, CSS and JavaScript.
 - `style.css` - all the styles
 - `script.js` - all the game logic inside one `Game` object
 - `images/` - pixel textures for the tiles and tools
+- `fonts/` - the pixel font used for the titles
 
 ## What I found hard
 - Keeping the original world safe for the reset. Copying the array with `=` only copies the reference, so I had to copy every row.
