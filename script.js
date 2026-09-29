@@ -1,51 +1,44 @@
-// ===== PLAN (pseudo-code) =====
-//
-// Clickable elements:
-//   - tool buttons (Axe, Pickaxe, Shovel)
-//   - tiles in the world
-//   - items in the inventory
-//   - reset button
-//
-// State to track:
-//   - world (2D array of tile types)
-//   - selected tool
-//   - selected inventory item
-//   - inventory contents
-//
-// renderWorld():
-//   clear the world container
-//   for each row in world
-//     for each column in row
-//       create a div with class "tile" and "tile-<type>"
-//       when clicked -> clickTile(row, col)
-//       add it to the world container
-//
-// selectTool(tool):
-//   save tool as selected tool
-//   remove "selected" class from all tool buttons
-//   add "selected" class to the clicked tool button
-//
-// clickTile(row, col):
-//   if an inventory item is selected and the tile is sky
-//     placeFromInventory(row, col)
-//   else if the selected tool matches the tile type
-//     removeTile(row, col)
-//     addToInventory(tile type)
-//
-// removeTile(row, col):
-//   set world[row][col] to "sky"
-//   renderWorld()
-//
-// addToInventory(type):
-//   add 1 to inventory[type]
-//   render the inventory
-//
-// placeFromInventory(row, col):
-//   set world[row][col] to the selected item type
-//   remove 1 from inventory[type]
-//   render world and inventory
-//
-// resetWorld():
-//   copy the original world back into world
-//   empty the inventory, clear selections
-//   render world and inventory
+const Game = {
+    // The world at the start of the game (never changes, used for reset)
+    originalWorld: [
+        ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+        ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky"],
+        ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky"],
+        ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "grass", "grass", "grass", "sky", "sky", "sky", "sky"],
+        ["sky", "tree", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "rock", "sky", "sky", "dirt", "dirt", "dirt", "sky", "tree", "sky", "sky"],
+        ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "dirt", "dirt", "dirt", "grass", "grass", "grass", "grass"],
+        ["dirt", "dirt", "dirt", "dirt", "rock", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "rock", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt"],
+        ["dirt", "dirt", "rock", "dirt", "rock", "rock", "dirt", "dirt", "dirt", "rock", "dirt", "rock", "rock", "dirt", "dirt", "dirt", "rock", "dirt", "dirt", "rock"],
+        ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "dirt", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "dirt", "rock", "rock", "rock", "rock"],
+        ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"]
+    ],
+
+    // The world we play with (this one changes)
+    world: [],
+
+    init() {
+        this.world = this.copyWorld(this.originalWorld);
+        this.renderWorld();
+    },
+
+    // Makes a new copy of the world so the original stays the same
+    copyWorld(world) {
+        return world.map(row => [...row]);
+    },
+
+    // Builds the tiles from the world array
+    renderWorld() {
+        const worldElement = document.getElementById("world");
+        worldElement.innerHTML = "";
+
+        for (let row = 0; row < this.world.length; row++) {
+            for (let col = 0; col < this.world[row].length; col++) {
+                const tile = document.createElement("div");
+                tile.classList.add("tile", "tile-" + this.world[row][col]);
+                worldElement.appendChild(tile);
+            }
+        }
+    }
+};
+
+Game.init();
