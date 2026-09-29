@@ -18,6 +18,13 @@ const Game = {
 
     selectedTool: null,
 
+    // How many tiles of each type we collected
+    inventory: {
+        tree: 0,
+        rock: 0,
+        dirt: 0
+    },
+
     // Which tile type each tool can remove
     toolRules: {
         axe: "tree",
@@ -29,6 +36,7 @@ const Game = {
         this.world = this.copyWorld(this.originalWorld);
         this.addToolEvents();
         this.renderWorld();
+        this.renderInventory();
     },
 
     addToolEvents() {
@@ -87,12 +95,47 @@ const Game = {
 
         if (this.selectedTool !== null && this.toolRules[this.selectedTool] === tileType) {
             this.removeTile(row, col);
+            this.addToInventory(tileType);
         }
     },
 
     removeTile(row, col) {
         this.world[row][col] = "sky";
         this.renderWorld();
+    },
+
+    addToInventory(tileType) {
+        this.inventory[tileType]++;
+        this.renderInventory();
+    },
+
+    // Builds the inventory items from the inventory object
+    renderInventory() {
+        const inventoryElement = document.getElementById("inventory");
+        const emptyMessage = document.getElementById("inventory-empty");
+        let isEmpty = true;
+
+        inventoryElement.innerHTML = "";
+
+        for (const tileType in this.inventory) {
+            const count = this.inventory[tileType];
+
+            if (count > 0) {
+                isEmpty = false;
+
+                const item = document.createElement("button");
+                item.type = "button";
+                item.classList.add("inventory-item", "tile-" + tileType);
+                item.textContent = count;
+                inventoryElement.appendChild(item);
+            }
+        }
+
+        if (isEmpty) {
+            emptyMessage.classList.remove("hidden");
+        } else {
+            emptyMessage.classList.add("hidden");
+        }
     }
 };
 
