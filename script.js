@@ -18,6 +18,13 @@ const Game = {
 
     selectedTool: null,
 
+    // Which tile type each tool can remove
+    toolRules: {
+        axe: "tree",
+        pickaxe: "rock",
+        shovel: "dirt"
+    },
+
     init() {
         this.world = this.copyWorld(this.originalWorld);
         this.addToolEvents();
@@ -66,9 +73,26 @@ const Game = {
             for (let col = 0; col < this.world[row].length; col++) {
                 const tile = document.createElement("div");
                 tile.classList.add("tile", "tile-" + this.world[row][col]);
+                tile.addEventListener("click", () => {
+                    this.clickTile(row, col);
+                });
                 worldElement.appendChild(tile);
             }
         }
+    },
+
+    // Checks if the selected tool matches the clicked tile
+    clickTile(row, col) {
+        const tileType = this.world[row][col];
+
+        if (this.selectedTool !== null && this.toolRules[this.selectedTool] === tileType) {
+            this.removeTile(row, col);
+        }
+    },
+
+    removeTile(row, col) {
+        this.world[row][col] = "sky";
+        this.renderWorld();
     }
 };
 
