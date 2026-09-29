@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft JS - World</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="game-header">
+        <h1>Minecraft JS</h1>
+        <nav class="game-nav">
+            <a href="index.html" class="button">How to Play</a>
+            <button id="reset-button" class="button button-red" type="button">Reset World</button>
+        </nav>
+    </header>
+
+    <main class="game-layout">
+        <section class="world-section" aria-label="World">
+            <div id="world" class="world"></div>
+        </section>
+
+        <aside class="side-panel">
+            <section class="panel">
+                <h2>Tools</h2>
+                <div id="toolbar" class="toolbar">
+                    <button class="tool" data-tool="axe" type="button">
+                        <span class="tool-icon icon-axe"></span>
+                        Axe
+                    </button>
+                    <button class="tool" data-tool="pickaxe" type="button">
+                        <span class="tool-icon icon-pickaxe"></span>
+                        Pickaxe
+                    </button>
+                    <button class="tool" data-tool="shovel" type="button">
+                        <span class="tool-icon icon-shovel"></span>
+                        Shovel
+                    </button>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Inventory</h2>
+                <p id="inventory-empty" class="inventory-empty">Your inventory is empty.</p>
+                <div id="inventory" class="inventory"></div>
+            </section>
+        </aside>
+    </main>
+</body>
+</html>
