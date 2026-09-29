@@ -1,12 +1,41 @@
 /* ===== General ===== */
 :root {
     --tile-size: 40px;
-    --sky: #8ecaf0;
+
+    /* Page */
+    --background: #1d1f21;
     --panel: #3a3a3a;
     --panel-dark: #262626;
     --text: #f2f2f2;
-    --green: #5fa832;
+    --text-muted: #bbb;
+    --white: #fff;
+    --black: #000;
+    --sky: #8ecaf0;
     --gold: #f5c542;
+    --tile-hover: rgba(255, 255, 255, 0.8);
+
+    /* Gray button */
+    --gray: #7d7d7d;
+    --gray-hover: #8f8f8f;
+    --gray-dark: #555;
+    --gray-light: #a8a8a8;
+
+    /* Red button */
+    --red: #b33a3a;
+    --red-hover: #c94747;
+    --red-dark: #7a2323;
+    --red-light: #d96060;
+
+    /* Green button */
+    --green: #5fa832;
+    --green-hover: #6dbb3c;
+    --green-dark: #3f7a1f;
+    --green-light: #86d45a;
+
+    /* Tools */
+    --tool: #5a5a5a;
+    --tool-hover: #6a6a6a;
+    --tool-selected: #2f5d1a;
 }
 
 * {
@@ -16,7 +45,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #1d1f21;
+    background-color: var(--background);
     color: var(--text);
 }
 
@@ -29,10 +58,10 @@ h2 {
 .button {
     display: inline-block;
     padding: 10px 18px;
-    background-color: #7d7d7d;
-    color: #fff;
-    border: 3px solid #000;
-    box-shadow: inset -3px -3px 0 #555, inset 3px 3px 0 #a8a8a8;
+    background-color: var(--gray);
+    color: var(--white);
+    border: 3px solid var(--black);
+    box-shadow: inset -3px -3px 0 var(--gray-dark), inset 3px 3px 0 var(--gray-light);
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
@@ -40,16 +69,16 @@ h2 {
 }
 
 .button:hover {
-    background-color: #8f8f8f;
+    background-color: var(--gray-hover);
 }
 
 .button-red {
-    background-color: #b33a3a;
-    box-shadow: inset -3px -3px 0 #7a2323, inset 3px 3px 0 #d96060;
+    background-color: var(--red);
+    box-shadow: inset -3px -3px 0 var(--red-dark), inset 3px 3px 0 var(--red-light);
 }
 
 .button-red:hover {
-    background-color: #c94747;
+    background-color: var(--red-hover);
 }
 
 /* ===== Game page layout ===== */
@@ -59,7 +88,7 @@ h2 {
     align-items: center;
     padding: 16px 32px;
     background-color: var(--panel-dark);
-    border-bottom: 4px solid #000;
+    border-bottom: 4px solid var(--black);
 }
 
 .game-header h1 {
@@ -92,7 +121,7 @@ h2 {
 .panel {
     padding: 16px;
     background-color: var(--panel);
-    border: 4px solid #000;
+    border: 4px solid var(--black);
 }
 
 .panel h2 {
@@ -106,7 +135,7 @@ h2 {
     grid-template-columns: repeat(20, var(--tile-size));
     grid-auto-rows: var(--tile-size);
     background-color: var(--sky);
-    border: 4px solid #000;
+    border: 4px solid var(--black);
 }
 
 .tile {
@@ -118,7 +147,7 @@ h2 {
 }
 
 .tile:hover {
-    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline: 2px solid var(--tile-hover);
     outline-offset: -2px;
 }
 
@@ -155,20 +184,20 @@ h2 {
     align-items: center;
     gap: 12px;
     padding: 8px 12px;
-    background-color: #5a5a5a;
-    color: #fff;
-    border: 3px solid #000;
+    background-color: var(--tool);
+    color: var(--white);
+    border: 3px solid var(--black);
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .tool:hover {
-    background-color: #6a6a6a;
+    background-color: var(--tool-hover);
 }
 
 .tool.selected {
-    background-color: #2f5d1a;
+    background-color: var(--tool-selected);
     border-color: var(--gold);
     box-shadow: 0 0 0 3px var(--gold);
 }
@@ -206,13 +235,13 @@ h2 {
     width: 56px;
     height: 56px;
     padding: 2px 4px;
-    border: 3px solid #000;
+    border: 3px solid var(--black);
     background-size: cover;
     image-rendering: pixelated;
-    color: #fff;
+    color: var(--white);
     font-size: 16px;
     font-weight: bold;
-    text-shadow: 2px 2px 0 #000;
+    text-shadow: 2px 2px 0 var(--black);
     cursor: pointer;
 }
 
@@ -223,7 +252,7 @@ h2 {
 
 .inventory-empty {
     margin: 0;
-    color: #bbb;
+    color: var(--text-muted);
     font-size: 14px;
 }
 
@@ -236,31 +265,31 @@ h2 {
     padding: 64px 24px 112px;
     text-align: center;
     background: url("images/grass.svg") bottom / 48px repeat-x, var(--sky);
-    border-bottom: 4px solid #000;
+    border-bottom: 4px solid var(--black);
 }
 
 .hero h1 {
     margin: 0;
     font-size: 40px;
-    color: #fff;
-    text-shadow: 4px 4px 0 #000;
+    color: var(--white);
+    text-shadow: 4px 4px 0 var(--black);
 }
 
 .hero p {
     max-width: 600px;
     margin: 20px auto 32px;
-    color: #1d1f21;
+    color: var(--background);
     font-size: 18px;
     line-height: 1.5;
 }
 
 .button-green {
     background-color: var(--green);
-    box-shadow: inset -3px -3px 0 #3f7a1f, inset 3px 3px 0 #86d45a;
+    box-shadow: inset -3px -3px 0 var(--green-dark), inset 3px 3px 0 var(--green-light);
 }
 
 .button-green:hover {
-    background-color: #6dbb3c;
+    background-color: var(--green-hover);
 }
 
 .button-big {
@@ -294,7 +323,7 @@ h2 {
     padding: 16px;
     text-align: center;
     background-color: var(--panel-dark);
-    border: 3px solid #000;
+    border: 3px solid var(--black);
 }
 
 .guide-card h3 {
@@ -303,7 +332,7 @@ h2 {
 
 .guide-card p {
     margin: 0;
-    color: #bbb;
+    color: var(--text-muted);
 }
 
 .guide-icons {
@@ -322,5 +351,5 @@ h2 {
     height: 48px;
     background-size: cover;
     image-rendering: pixelated;
-    border: 3px solid #000;
+    border: 3px solid var(--black);
 }
