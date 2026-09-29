@@ -16,9 +16,40 @@ const Game = {
     // The world we play with (this one changes)
     world: [],
 
+    selectedTool: null,
+
     init() {
         this.world = this.copyWorld(this.originalWorld);
+        this.addToolEvents();
         this.renderWorld();
+    },
+
+    addToolEvents() {
+        const toolButtons = document.querySelectorAll(".tool");
+
+        toolButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                this.selectTool(button.dataset.tool);
+            });
+        });
+    },
+
+    selectTool(toolName) {
+        this.selectedTool = toolName;
+        this.updateToolButtons();
+    },
+
+    // Highlights the selected tool button
+    updateToolButtons() {
+        const toolButtons = document.querySelectorAll(".tool");
+
+        toolButtons.forEach(button => {
+            if (button.dataset.tool === this.selectedTool) {
+                button.classList.add("selected");
+            } else {
+                button.classList.remove("selected");
+            }
+        });
     },
 
     // Makes a new copy of the world so the original stays the same

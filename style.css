@@ -167,6 +167,12 @@ h2 {
     background-color: #6a6a6a;
 }
 
+.tool.selected {
+    background-color: #2f5d1a;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold);
+}
+
 .tool-icon {
     width: 32px;
     height: 32px;
